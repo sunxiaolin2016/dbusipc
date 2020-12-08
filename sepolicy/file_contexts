@@ -1,0 +1,6 @@
+# bin exec
+/(vendor|system/vendor)/bin/dbus-launch         u:object_r:dbus-launch_exec:s0
+/(vendor|system/vendor)/bin/dbus-daemon        u:object_r:dbus-launch_exec:s0
+
+/(vendor|system/vendor)/lib(64)?/libdbus-1\.so u:object_r:same_process_hal_file:s0
+/(vendor|system/vendor)/lib(64)?/libexpat\.so\.1 u:object_r:same_process_hal_file:s0

@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<node>
+
+   <interface name="com.hsae.ServiceIpc">
+   
+      <!-- Method used to invoke all other methods -->
+      <method name="Invoke">
+         <!-- The name of the method to invoke -->
+         <arg name="method" type="s" direction="in"/>
+         
+         <!-- The JSON encoded input parameters -->
+         <arg name="parameters" type="s" direction="in"/>
+         
+         <!-- The JSON encoded output parameters -->
+         <arg name="result" type="s" direction="out"/>
+	   </method>
+	   
+	   <!-- The signal used to transmit all other signals -->
+		<signal name="Emit">
+		   <!-- The name of the signal being transmitted -->
+		   <arg name="name" type="s"/>
+		   
+		   <!-- The JSON encoded signal data -->
+			<arg name="data" type="s" />
+		</signal>
+		
+	</interface>
+   	
+</node>

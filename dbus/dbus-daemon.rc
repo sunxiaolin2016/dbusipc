@@ -1,0 +1,6 @@
+service dbus-launch /vendor/bin/dbus-launch --sh-syntax --config-file=/system/etc/session.conf 2> /dev/null
+    socket dbus-launch stream 660 system system
+    oneshot
+    class core
+    user root
+    seclabel u:r:dbus-launch:s0

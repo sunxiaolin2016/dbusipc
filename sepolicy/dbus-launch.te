@@ -1,0 +1,26 @@
+type dbus-launch, domain;
+#typeattribute dbus-launch coredomain;
+#permissive dbus-launch;
+type dbus-launch_exec, exec_type, vendor_file_type, file_type;
+
+# Started by init
+init_daemon_domain(dbus-launch)
+#net_domain(dbus-launch)
+
+allow dbus-launch devpts:chr_file  { open read write ioctl setattr getattr unlink};
+
+allow dbus-launch dbus-launch:tcp_socket {create setopt bind listen accept read write};
+allow dbus-launch dbus-launch:capability {sys_resource net_raw};
+allow dbus-launch system_file:file {execute_no_trans};
+allow dbus-launch port:tcp_socket {name_bind };
+allow dbus-launch node:tcp_socket {node_bind};
+
+#allow dbus-launch netd:unix_stream_socket {connectto};
+allow dbus-launch fwmarkd_socket:sock_file {read write};
+allow system_server untrusted_app_25:file {write};
+
+allow netd dbus-launch:fd {use};
+allow netd dbus-launch:tcp_socket {read write};
+
+allow init socket_device:sock_file unlink;
+
